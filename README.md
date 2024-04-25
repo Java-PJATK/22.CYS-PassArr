@@ -76,9 +76,7 @@ return type of the function (or is convertible to this type).
 to the state it had before invocation. In particular, all local variables, including
 those corresponding to parameters, cease to exist.  
 
-* If the function returns a value, the invocation expression (something like fun(a)) may be considered to be a temporary, unmodifiable variable whose type is the re￾turn type of the function and value is that of expr appearing in the return expr;
-expression. It is a temporary variable, so normally we have to do something with
-it: print it, assign its value to a variable, or use it in another expression.  
+* If the function returns a value, the invocation expression (something like fun(a)) may be considered to be a temporary, unmodifiable variable whose type is the re�turn type of the function and value is that of expr appearing in the return expr; expression. It is a temporary variable, so normally we have to do something with it: print it, assign its value to a variable, or use it in another expression.  
   
 An example of a rather trivial function would be
 ```java
