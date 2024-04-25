@@ -48,7 +48,7 @@ enclosed in round parentheses:
 What happens is:  
   
 • Copies of the values of arguments are pushed (placed) on the program’s stack
-(a special region of memory).
+(a special region of memory).  
 • These copies of the arguments, laying on the stack, can be accessed inside the
 body of the functions by names of the corresponding declared parameters. Their
 names in the calling function are completely irrelevant, because a function can see
@@ -87,7 +87,11 @@ if (b > mx) mx = b;
 if (c > mx) mx = c;
 return mx;
 }
+```
+  
 and then, somewhere in main or another function
+  
+```java
 double u = 1, v = 2, w = 2;
 // ...
 double result = maxOf3(u, v+1, w-1);
