@@ -19,17 +19,17 @@ The definition of a static function is of the form
 
 and consists of
 
-• The keyword static (there are also functions which are not static — we will be
+* The keyword static (there are also functions which are not static — we will be
 talking about them in Sec. 8, p. 60). Before or after this keyword we could place
 an access specifier of the function (public or private) — we will discuss it later.  
   
-• The name of the type of a result which this function yields (the so called return
+* The name of the type of a result which this function yields (the so called return
 type); void, if the function doesn’t return any result.  
   
-• A name of the function; it should always start with a lower-case letter but is
+* A name of the function; it should always start with a lower-case letter but is
 otherwise arbitrary.  
   
-• In round parentheses, a list of parameters: these are comma separated pairs Type
+* In round parentheses, a list of parameters: these are comma separated pairs Type
 parName where Type is the name of a type and parName is an (arbitrary) name of
 this parameter (it should start with a lower-case letter). The list of parameters
 can be empty, but parentheses are always required.  
