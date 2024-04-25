@@ -91,7 +91,7 @@ and then, somewhere in main or another function
 double u = 1, v = 2, w = 2;
 // ...
 double result = maxOf3(u, v+1, w-1);
-```. 
+```  
   
 As we can see, the arguments do not need to be variables — what matters are their
 values, copies of which will be put on the stack and will be available for the function
