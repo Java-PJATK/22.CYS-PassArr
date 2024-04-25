@@ -119,4 +119,8 @@ int res = fun(a);
   
 the value of res will be 100, but the value of a will still be 1, as only the copy of its value was accessible to the function; this copy was modified, but it disappeared afterthe return anyway.  
   
-All this applies also to passing objects, for example arrays (which are objects.)There is one important fact that we have to remember, though. Variables declaredas arrays (or variables of any other object type) are really pointers (in Java called references) to anonymous objects representing these arrays (or other objects). Their values are addresses of objects. This means, in particular, that when we pass an array 
+All this applies also to passing objects, for example arrays (which are objects.)There is one important fact that we have to remember, though. Variables declaredas arrays (or variables of any other object type) are really pointers (in Java called references) to anonymous objects representing these arrays (or other objects). Their values are addresses of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copyof the address of the array, not the array (or another object) itself. This copy will beput on the stack and will disappear after the function returns, so modifying it usuallydoesn’t make much sense. However, the value of this copy is the address of the originalobject (e.g., of an array); consequently, having this address, functions which receive itcan modify the original object (as they ‘know where it is’).  
+
+Examples can be found in the following program  
+
+Listing 22
