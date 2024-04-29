@@ -4,12 +4,10 @@ Listing 22 CYS-PassArr/PassArr.java Page 46
 # Section 6   
 ## Static functions  
  
-Classes usually contain, besides fields, constructors and methods (that we will cover
-later, when talking about classes) also static functions (or static methods). We can
-think about a function as a piece of code that can be executed (invoked) many times
-from other functions (for example, from main) in such a way that in each invocation
-some data that the function operates on may be different.
-The definition of a static function is of the form
+Classes usually contain, besides fields, constructors and methods (that we will cover later, when talking about classes) also **static functions** (or static methods). We can think about a function as a piece of code that can be executed (invoked) many times
+from other functions (for example, from `main`) in such a way that in each invocation some data that the function operates on may be different.  
+
+The definition of a static function is of the form  
 
 ```java
 [access] static Type funName(Type1 parName1, Type2 parName2, ...) {
@@ -19,23 +17,17 @@ The definition of a static function is of the form
 
 and consists of
 
-* The keyword static (there are also functions which are not static — we will be talking about them in Sec. 8, p. 60). Before or after this keyword we could place an access specifier of the function (public or private) — we will discuss it later.  
+* The keyword `static` (there are also functions which are not static — we will be talking about them in Sec. 8, p. 60). Before or after this keyword we could place an access specifier of the function (`public` or `private`) — we will discuss it later.  
   
 * The name of the type of a result which this function yields (the so called return type); void, if the function doesn’t return any result.  
   
 * A name of the function; it should always start with a lower-case letter but is otherwise arbitrary.  
   
-* In round parentheses, a list of parameters: these are comma separated pairs Type
-parName where Type is the name of a type and parName is an (arbitrary) name of
-this parameter (it should start with a lower-case letter). The list of parameters
-can be empty, but parentheses are always required.  
+* In round parentheses, a list of parameters: these are comma separated pairs `Type parName` where `Type` is the name of a type and `parName` is an (arbitrary) name of this parameter (it should start with a lower-case letter). The list of parameters can be empty, but parentheses are always required.  
   
 * The body of the function enclosed in braces.  
   
-Names of parameters are arbitrary and have nothing to do with names declared in other
-functions (as their parameters or variables defined inside them). We invoke (call) the
-function just by its name with arguments corresponding to the function’s parameters
-enclosed in round parentheses:  
+Names of parameters are arbitrary and have nothing to do with names declared in other functions (as their parameters or variables defined inside them). We invoke (call) the function just by its name with **arguments** corresponding to the function’s parameters enclosed in round parentheses:  
   
 ```java
 ... funName(arg1, arg2, ...) ...
@@ -43,19 +35,12 @@ enclosed in round parentheses:
   
 What happens is:  
   
-* Copies of the values of arguments are pushed (placed) on the program’s stack
-(a special region of memory).  
+* _Copies_ of the values of arguments are pushed (placed) on the program’s stack (a special region of memory).  
 
-* These copies of the arguments, laying on the stack, can be accessed inside the
-body of the functions by names of the corresponding declared parameters. Their
-names in the calling function are completely irrelevant, because a function can see
-only values laying on the stack. We can say that it doesn’t even know ‘who calls’
-it and where from. It only knows that there must be values of the appropriate
-type (as declared as the type of parameters) lying on the stack that can be
-associated with its parameters. In particular, we can use literals as arguments
-— copies of their values will be then pushed on the stack.  
+* These copies of the arguments, laying on the stack, can be accessed inside the body of the functions by names of the corresponding declared parameters. Their names in the calling function are completely irrelevant, because a function can see
+only _values_ laying on the stack. We can say that it doesn’t even know ‘who calls’ it and where from. It only knows that there must be values of the appropriate type (as declared as the type of parameters) lying on the stack that can be associated with its parameters. In particular, we can use literals as arguments — copies of their values will be then pushed on the stack.  
 
-* All variables defined inside a function are local to this function — they are also located on the stack (in the example below, mx is such a local variable).
+* All variables defined _inside_ a function are _local_ to this function — they are also located on the stack (in the example below, mx is such a local variable).
 This region of the program stack, associated with an invocation of a function, is called this function’s **stack frame** or **activation record**. Note that names of
 local variables are arbitrary and unrelated to local variables of the same name appearing in other functions.  
  
@@ -106,7 +91,15 @@ the value of `res` will be 100, but the value of a will still be 1, as only the 
   
 All this applies also to passing objects, for example arrays (which _are_ objects.)  3
 
-There is one important fact that we have to remember, though. Variables declared as arrays (or variables of any other object type) are really **pointers** (**in Java called _references_**) to anonymous objects representing these arrays (or other objects). Their values are _addresses_ of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copy of the _address_ of the array, not the array (or another object) itself. This copy will be put on the stack and will disappear after the function returns, so modifying it usually doesn’t make much sense. However, the value of this copy is the address of the original object (e.g., of an array); consequently, having this address, functions which receive it _can_ modify the original object (as they ‘know where it is’).  
+There is one important fact that we have to remember, though.  
+
+Variables declared as arrays (or variables of any other object type) are really **pointers** (**in Java called _references_**) to anonymous objects representing these arrays (or other objects).  
+
+Their values are _addresses_ of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copy of the _address_ of the array, not the array (or another object) itself. 
+
+This copy will be put on the stack and will disappear after the function returns, so modifying it usually doesn’t make much sense.  
+
+However, the value of this copy is the address of the original object (e.g., of an array); consequently, having this address, functions which receive it _can_ modify the original object (as they ‘know where it is’).  
   
 Examples can be found in the following program:
 
