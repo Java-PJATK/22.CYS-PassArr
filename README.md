@@ -72,10 +72,10 @@ An example of a rather trivial function would be
 
 ```java
 static double maxOf3(double a, double b, double c) {
-double mx = a;
-if (b > mx) mx = b;
-if (c > mx) mx = c;
-return mx;
+    double mx = a;
+    if (b > mx) mx = b;
+    if (c > mx) mx = c;
+    return mx;
 }
 ```
   
@@ -87,17 +87,14 @@ double u = 1, v = 2, w = 2;
 double result = maxOf3(u, v+1, w-1);
 ```  
   
-As we can see, the arguments do not need to be variables — what matters are their
-values, copies of which will be put on the stack and will be available for the function
-under names a, b and c (and will ‘disappear’ when the function exits).  
+As we can see, the arguments do not need to be variables — what matters are their _values_, _copies_ of which will be put on the stack and will be available for the function under names `a`, `b` and `c` (and will ‘disappear’ when the function exits).  
 
-It is very important to realize how the arguments are passed to the function. For
-example, suppose we have a function  
+It is very important to realize how the arguments are passed to the function. For example, suppose we have a function  
   
 ```java
 public static int fun(int a) {
-a = a + 99;
-return a;
+    a = a + 99;
+    return a;
 }
 ``` 
   
@@ -108,11 +105,10 @@ int a = 1;
 int res = fun(a);
 ```
   
-the value of res will be 100, but the value of a will still be 1, as only the copy of its value was accessible to the function; this copy was modified, but it disappeared after the return anyway.  
+the value of `res` will be 100, but the value of a will still be 1, as only the copy of its value _was_ accessible to the function; this copy was modified, but it disappeared after the return anyway.  
   
-All this applies also to passing objects, for example arrays (which are objects.)  
-  
-There is one important fact that we have to remember, though. Variables declared as arrays (or variables of any other object type) are really pointers (in Java called references) to anonymous objects representing these arrays (or other objects). Their values are addresses of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copy of the address of the array, not the array (or another object) itself. This copy will be put on the stack and will disappear after the function returns, so modifying it usually doesn’t make much sense. However, the value of this copy is the address of the original object (e.g., of an array); consequently, having this address, functions which receive it can modify the original object (as they ‘know where it is’).  
+All this applies also to passing objects, for example arrays (which _are_ objects.)  
+There is one important fact that we have to remember, though. Variables declared as arrays (or variables of any other object type) are really **pointers** (**in Java called _references_**) to anonymous objects representing these arrays (or other objects). Their values are _addresses_ of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copy of the _address_ of the array, not the array (or another object) itself. This copy will be put on the stack and will disappear after the function returns, so modifying it usually doesn’t make much sense. However, the value of this copy is the address of the original object (e.g., of an array); consequently, having this address, functions which receive it _can_ modify the original object (as they ‘know where it is’).  
   
 Examples can be found in the following program:
 
