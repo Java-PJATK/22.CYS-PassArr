@@ -55,18 +55,15 @@ type (as declared as the type of parameters) lying on the stack that can be
 associated with its parameters. In particular, we can use literals as arguments
 — copies of their values will be then pushed on the stack.  
 
-* All variables defined inside a function are local to this function — they are
-also located on the stack (in the example below, mx is such a local variable).
-This region of the program stack, associated with an invocation of a function, is
-called this function’s stack frame or activation record. Note that names of
-local variables are arbitrary and unrelated to local variables of the same name
-appearing in other functions. 
+* All variables defined inside a function are local to this function — they are also located on the stack (in the example below, mx is such a local variable).
+This region of the program stack, associated with an invocation of a function, is called this function’s **stack frame** or **activation record**. Note that names of
+local variables are arbitrary and unrelated to local variables of the same name appearing in other functions.  
  
-Instructions in the body of the function are executed. If the function is void, execution stops when the end of the definition is reached or a return; statement is encountered. If it is non-void, execution ends when statement return expr; is encountered, where expr is an expression whose value is of type declared as the return type of the function (or is convertible to this type).  
+* Instructions in the body of the function are executed. If the function is `void`, execution stops when the end of the definition is reached or a `return`; statement is encountered. If it is non-`void`, execution ends when statement `return expr`; is encountered, where expr is an expression whose value is of type declared as the return type of the function (or is convertible to this type).  
 
 * When the function returns, the stack is ’unwound’ or ’rewound’: it is reverted to the state it had before invocation. In particular, all local variables, including those corresponding to parameters, cease to exist.  
 
-* If the function returns a value, the invocation expression (something like fun(a)) may be considered to be a temporary, unmodifiable variable whose type is the return type of the function and value is that of expr appearing in the return expr; expression. It is a temporary variable, so normally we have to do something with it: print it, assign its value to a variable, or use it in another expression.  
+* If the function returns a value, the invocation expression (something like fun(a)) may be considered to be a _temporary_, unmodifiable variable whose type is the return type of the function and value is that of expr appearing in the `return expr`; expression. It is a temporary variable, so normally we have to do something with it: print it, assign its value to a variable, or use it in another expression.  
   
 An example of a rather trivial function would be  
 
@@ -107,7 +104,8 @@ int res = fun(a);
   
 the value of `res` will be 100, but the value of a will still be 1, as only the copy of its value _was_ accessible to the function; this copy was modified, but it disappeared after the return anyway.  
   
-All this applies also to passing objects, for example arrays (which _are_ objects.)  
+All this applies also to passing objects, for example arrays (which _are_ objects.)  3
+
 There is one important fact that we have to remember, though. Variables declared as arrays (or variables of any other object type) are really **pointers** (**in Java called _references_**) to anonymous objects representing these arrays (or other objects). Their values are _addresses_ of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copy of the _address_ of the array, not the array (or another object) itself. This copy will be put on the stack and will disappear after the function returns, so modifying it usually doesn’t make much sense. However, the value of this copy is the address of the original object (e.g., of an array); consequently, having this address, functions which receive it _can_ modify the original object (as they ‘know where it is’).  
   
 Examples can be found in the following program:
