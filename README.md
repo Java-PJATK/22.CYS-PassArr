@@ -114,7 +114,56 @@ All this applies also to passing objects, for example arrays (which are objects.
   
 There is one important fact that we have to remember, though. Variables declared as arrays (or variables of any other object type) are really pointers (in Java called references) to anonymous objects representing these arrays (or other objects). Their values are addresses of objects. This means, in particular, that when we pass an array to a function (or return an array from a function), what we are really passing is a copy of the address of the array, not the array (or another object) itself. This copy will be put on the stack and will disappear after the function returns, so modifying it usually doesn’t make much sense. However, the value of this copy is the address of the original object (e.g., of an array); consequently, having this address, functions which receive it can modify the original object (as they ‘know where it is’).  
   
-Examples can be found in the following program  
+Examples can be found in the following program:
 
-Listing 22
-[22.CYS-PassAr/PassArr.java](https://github.com/Java-PJATK/22.CYS-PassArr/blob/main/PassArr.java) 
+## Listing 22 CYS-PassAr/PassArr.java  
+
+[22.CYS-PassAr/PassArr.java](https://github.com/Java-PJATK/22.CYS-PassArr/blob/main/PassArr.java)   
+
+```java
+// CYS-PassArr/PassArr.java
+ 
+public class PassArr {
+
+    public static void main(String[] args) {
+          // array returned from a function
+        int[] a = getArr(5);
+        printArr(a, "Array returned from function");
+
+          // passing  r e f e r e n c e  to function
+        reverseArr(a);
+        printArr(a, "Array a reversed");
+    }
+
+    /**
+     *  prints an array of integer numbers
+     */
+    private static void printArr(int[] a, String message) {
+        System.out.print(message + ":\n    [");
+        for (int i : a) System.out.print(" " + i);
+        System.out.println(" ]; size = " + a.length);
+    }
+
+    /**
+     *  returns first n triangular numbers
+     */
+    private static int[] getArr(int n) {
+        int[] arr = new int[n];
+        for (int i = 0; i < n; ++i)
+            arr[i] = (i+1)*(i+2)/2;
+        return arr;
+    }
+
+    /**
+     *  modifies input array (reversing order of elements)
+     */
+    private static void reverseArr(int[] a) {
+        for (int i = 0, j = a.length-1; i < j; ++i,--j) {
+            int p = a[i];
+            a[i]  = a[j];
+            a[j]  = p;
+        }
+    }
+}
+
+```
