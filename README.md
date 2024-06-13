@@ -1,8 +1,7 @@
 # CYS-PassArr
 Listing 22 CYS-PassArr/PassArr.java Page 46
 
-# Section 6   
-## Static functions  
+# Section 6. Static functions  
  
 Classes usually contain, besides fields, constructors and methods (that we will cover later, when talking about classes) also **static functions** (or static methods). We can think about a function as a piece of code that can be executed (invoked) many times
 from other functions (for example, from `main`) in such a way that in each invocation some data that the function operates on may be different.  
